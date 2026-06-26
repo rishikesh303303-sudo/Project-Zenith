@@ -1,26 +1,79 @@
-@import "tailwindcss";
+/* app/globals.css */
+/* Tokens directly lifted from the mockup — cyan-on-near-black mission
+   control palette. Koi naya design direction nahi, exact match karna hai. */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-void: #04070d;          /* page background, deep space black */
+  --bg-panel: #0a1018;         /* card / panel background */
+  --bg-panel-raised: #0d1620;  /* nested cards inside panel */
+  --border-subtle: rgba(0, 212, 255, 0.14);
+  --border-strong: rgba(0, 212, 255, 0.35);
+
+  --cyan: #2dd9f4;             /* primary accent */
+  --cyan-bright: #5be9ff;
+  --cyan-dim: rgba(45, 217, 244, 0.45);
+  --cyan-glow: rgba(45, 217, 244, 0.25);
+
+  --text-primary: #eaf2f7;
+  --text-secondary: #7e92a3;
+  --text-muted: #50616f;
+
+  --status-good: #2de8b0;      /* NOMINAL / STRONG green-cyan */
+  --status-warn: #f0b94d;
+
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-md: 12px;
+  --radius-sm: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--cyan-dim);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan-bright);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
 }
