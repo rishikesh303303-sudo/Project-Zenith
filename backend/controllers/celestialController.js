@@ -1,4 +1,4 @@
-const { fetchSatelliteData } = require('../services/satelliteService');
+const { fetchSatelliteData } = require('../services/SatelliteService');
 
 exports.getCelestialData = async (req, res) => {
     const { lat, lng } = req.query;
